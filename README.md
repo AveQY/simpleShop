@@ -6,7 +6,7 @@
 ![Vue 3](https://img.shields.io/badge/Vue_3.4.x-brightgreen)
 ![Vite](https://img.shields.io/badge/Vite-5.x-646cff)
 
-> 一个面向移动端的商店小程序，使用 Spring Boot 后端 + Vue 3 前端开发。
+> 面向移动端的商店小程序，提供商品浏览、购物车、下单、支付及后台管理等功能。后端基于 Spring Boot 3 + MyBatis Plus 构建 RESTful API，前端使用 Vue 3 + Vant UI 开发移动端界面，并配套管理端实现数据统计、商品与订单管理。
 
 by [摸鱼校尉](https://me.aweqy.top/)
 
@@ -34,7 +34,9 @@ by [摸鱼校尉](https://me.aweqy.top/)
 | MyBatis Plus | 3.5.9 | ORM 框架 |
 | MySQL | 8.0+ | 关系数据库 |
 | Knife4j | 4.4.0 | API 文档 |
-| Fastjson2 | - | JSON 处理 |
+| Fastjson2 | 2.0.45 | JSON 处理 |
+| Thumbnailator | 0.4.20 | 图片压缩 |
+| Lombok | - | 简化实体代码 |
 
 ### 前端
 
