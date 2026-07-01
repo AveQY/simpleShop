@@ -1,31 +1,51 @@
-# 简易的商店项目
+# 简易商店 (Simple Shop)
 
-一个面向移动端的商店小程序，使用 Spring Boot 后端 + Vue 3 前端开发。
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.1.8-green)
+![Vue 3](https://img.shields.io/badge/Vue_3.4.x-brightgreen)
+![Vite](https://img.shields.io/badge/Vite-5.x-646cff)
+
+> 一个面向移动端的商店小程序，使用 Spring Boot 后端 + Vue 3 前端开发。
 
 by [摸鱼校尉](https://me.aweqy.top/)
 
 ## 软件界面
-| ![用户界面首页](./image/1.png) | ![购物车界面](./image/2.png) | ![商品详细界面](./image/3.png)        |
-|--------------------------|-------------------------|---------------------------------|
-| ![确认订单](./image/4.png)   | ![后台首页](./image/5.png)  | ![商品管理](./image/6.png)          |
-| ![分类管理](./image/7.png)   | ![订单管理](./image/8.png)  |  |
+
+| 用户界面首页 | 购物车界面 | 商品详细界面 |
+|:---:|:---:|:---:|
+| ![用户界面首页](./image/1.png) | ![购物车界面](./image/2.png) | ![商品详细界面](./image/3.png) |
+
+| 确认订单 | 后台首页 | 商品管理 |
+|:---:|:---:|:---:|
+| ![确认订单](./image/4.png) | ![后台首页](./image/5.png) | ![商品管理](./image/6.png) |
+
+| 分类管理 | 订单管理 |
+|:---:|:---:|
+| ![分类管理](./image/7.png) | ![订单管理](./image/8.png) |
 
 ## 技术栈
 
 ### 后端
-- Spring Boot 3.1.8
-- MyBatis Plus 3.5.9
-- MySQL
-- Knife4j 4.4.0 (API 文档)
-- Fastjson2
+
+| 技术 | 版本 | 说明 |
+| --- | --- | --- |
+| Spring Boot | 3.1.8 | 核心框架 |
+| MyBatis Plus | 3.5.9 | ORM 框架 |
+| MySQL | 8.0+ | 关系数据库 |
+| Knife4j | 4.4.0 | API 文档 |
+| Fastjson2 | - | JSON 处理 |
 
 ### 前端
-- Vue 3
-- Vite 5
-- Vant UI 4 (移动端组件库)
-- Vue Router 4
-- Axios
-- ECharts 5
+
+| 技术 | 版本 | 说明 |
+| --- | --- | --- |
+| Vue 3 | 3.4.x | 前端框架 |
+| Vite | 5.x | 构建工具 |
+| Vant UI | 4.x | 移动端组件库 |
+| Vue Router | 4.x | 路由管理 |
+| Axios | - | HTTP 请求 |
+| ECharts | 5.x | 数据可视化 |
 
 ## 项目结构
 
@@ -61,7 +81,14 @@ ddhj-frontend/                  # 前端项目
 
 ## 快速开始
 
-### 1. 数据库准备
+### 环境要求
+
+- **JDK 17+**
+- **Maven 3.6+**
+- **Node.js 18+**
+- **MySQL 8.0+**
+
+### 数据库准备
 
 ```sql
 -- 创建数据库
@@ -71,31 +98,21 @@ CREATE DATABASE IF NOT EXISTS ddhj DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4
 -- 执行 ddhj/src/main/resources/schema.sql
 ```
 
-**注意**: 请修改 `application.yml` 中的数据库连接信息：
-```yaml
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/ddhj?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
-    username: root
-    password: 123456  # 修改为你的数据库密码
-```
+### 后端启动
 
-### 2. 启动后端
+1. 修改 `application.yml` 中的数据库连接信息
+2. 启动服务：
 
 ```bash
 cd e:\project\ddhj
-
-# 使用 Maven 启动
 mvn spring-boot:run
-
-# 或者使用 IDE 运行 DdhjApplication.java
 ```
 
-后端服务将在 `http://localhost:42835/api` 启动
+后端服务默认运行在 `http://localhost:42835/api`
 
-API 文档地址: `http://localhost:42835/api/doc.html`
+API 文档地址：`http://localhost:42835/api/doc.html`
 
-### 3. 启动前端
+### 前端启动
 
 ```bash
 cd e:\project\ddhj-frontend
@@ -107,17 +124,19 @@ npm install
 npm run dev
 ```
 
-前端服务将在 `http://localhost:42836` 启动
+前端服务默认运行在 `http://localhost:42836`
 
 ## 功能说明
 
 ### 用户端功能
+
 - **商品浏览**: 左侧分类栏，右侧商品列表展示
 - **规格选择**: 点击加号图标，弹出规格选择器（支持库存显示）
 - **购物车**: 底部购物栏，支持商品增减
 - **下单流程**: 购物车 → 订单确认 → 输入实付金额 → 完成下单
 
 ### 管理端功能 (`/manage`)
+
 - **数据统计**: 收入图表（分时/日/月）、今日总收入、热销榜单
 - **商品管理**: 添加/编辑/删除商品，支持图片上传，区分进货价和出售价
 - **分类管理**: 添加/编辑/删除分类
@@ -126,6 +145,7 @@ npm run dev
 ## API 接口
 
 ### 商品接口
+
 - `GET /api/products` - 商品列表（支持分类筛选）
 - `GET /api/products/{id}` - 商品详情
 - `POST /api/products` - 添加商品
@@ -133,28 +153,33 @@ npm run dev
 - `DELETE /api/products/{id}` - 删除商品
 
 ### 分类接口
+
 - `GET /api/categories` - 分类列表
 - `POST /api/categories` - 添加分类
 - `PUT /api/categories/{id}` - 更新分类
 - `DELETE /api/categories/{id}` - 删除分类
 
 ### 规格接口
+
 - `GET /api/specifications/product/{productId}` - 商品规格列表
 - `POST /api/specifications` - 添加规格
 - `PUT /api/specifications/{id}` - 更新规格
 - `DELETE /api/specifications/{id}` - 删除规格
 
 ### 订单接口
+
 - `POST /api/orders` - 创建订单
 - `GET /api/orders` - 订单列表
 - `GET /api/orders/{id}` - 订单详情
 
 ### 统计接口
+
 - `GET /api/statistics/revenue` - 收入统计
 - `GET /api/statistics/revenue/today` - 今日总收入
 - `GET /api/statistics/hot-products` - 热销商品榜单
 
 ### 文件上传
+
 - `POST /api/upload` - 图片上传
 
 ## 注意事项
@@ -174,4 +199,9 @@ npm run dev
 
 ## 许可证
 
-MIT
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
